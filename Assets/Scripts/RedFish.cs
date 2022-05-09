@@ -28,7 +28,7 @@ public class RedFish : MonoBehaviour
 
     private void Update()
     {
-        updateFish();
+        Win();
         
     }
 
@@ -56,7 +56,7 @@ public class RedFish : MonoBehaviour
         }
     }
 
-    private void updateFish()
+    private void Win()
     {
         if (gameUI.image3.fillAmount == 1)
         {

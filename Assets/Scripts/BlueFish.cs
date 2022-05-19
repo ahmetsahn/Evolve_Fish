@@ -24,12 +24,12 @@ public class BlueFish : MonoBehaviour
         FollowPointPosition();
     }
 
-    void Update()
+    private void Update()
     {
         updateFish();
     }
 
-    public void Move()
+    private void Move()
     {
         transform.position = Vector3.Lerp(transform.position, mousePos, Time.deltaTime);
         transform.right = mousePos - transform.position;

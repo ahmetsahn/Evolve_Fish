@@ -17,7 +17,7 @@ public class GreenFish : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -27,7 +27,7 @@ public class GreenFish : MonoBehaviour
         updateFish();
     }
 
-    public void Move()
+    private void Move()
     {
         transform.position = Vector3.Lerp(transform.position, mousePos, Time.deltaTime);
         transform.right = mousePos - transform.position;

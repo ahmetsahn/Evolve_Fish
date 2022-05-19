@@ -14,7 +14,7 @@ public class RightEnemy : MonoBehaviour
         transform.position = RandomSpawnPosition();
     }
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         

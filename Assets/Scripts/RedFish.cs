@@ -32,7 +32,7 @@ public class RedFish : MonoBehaviour
 
     }
 
-    public void Move()
+    private void Move()
     {
         transform.position = Vector3.Lerp(transform.position, mousePos, Time.deltaTime);
         transform.right = mousePos - transform.position;

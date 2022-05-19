@@ -20,20 +20,20 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpeedUpSpawn()
     {
+        yield return new WaitForSeconds(14);
+        CancelInvoke();
+        InvokeRepeating("SpawnEnemies", 4, 3.5f);
+        yield return new WaitForSeconds(14);
+        CancelInvoke();
+        InvokeRepeating("SpawnEnemies", 3.5f, 3f);
         yield return new WaitForSeconds(15);
         CancelInvoke();
-        InvokeRepeating("SpawnEnemies", 0, 3.5f);
+        InvokeRepeating("SpawnEnemies", 3, 2f);
+        yield return new WaitForSeconds(14);
+        CancelInvoke();
+        InvokeRepeating("SpawnEnemies", 2, 1f);
         yield return new WaitForSeconds(15);
         CancelInvoke();
-        InvokeRepeating("SpawnEnemies", 0, 3f);
-        yield return new WaitForSeconds(15);
-        CancelInvoke();
-        InvokeRepeating("SpawnEnemies", 0, 2f);
-        yield return new WaitForSeconds(15);
-        CancelInvoke();
-        InvokeRepeating("SpawnEnemies", 0, 1f);
-        yield return new WaitForSeconds(15);
-        CancelInvoke();
-        InvokeRepeating("SpawnEnemies", 0, 0.8f);
+        InvokeRepeating("SpawnEnemies", 1, 0.8f);
     }
 }

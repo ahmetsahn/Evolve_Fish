@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class BlueFish : MonoBehaviour
 {
     private Vector3 mousePos;
-    private SpriteRenderer sr;
+    private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     private GameUI gameUI;
 
@@ -13,9 +13,9 @@ public class BlueFish : MonoBehaviour
     {
         gameUI = GameObject.Find("Game UI").GetComponent<GameUI>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        sr =gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         FollowPointPosition();
-        sr.flipX = true;
+        spriteRenderer.flipX = true;
     }
 
     private void FixedUpdate()
@@ -29,28 +29,30 @@ public class BlueFish : MonoBehaviour
         updateFish();
     }
 
-    private void Move()
+    public void Move()
     {
         transform.position = Vector3.Lerp(transform.position, mousePos, Time.deltaTime);
         transform.right = mousePos - transform.position;
 
         if (Input.touchCount > 0 && Time.timeScale == 1)
         {
-            sr.flipX = false;
+            spriteRenderer.flipX = false;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
         }
 
         if (mousePos.x < transform.position.x)
         {
-            sr.flipY = true;
+            spriteRenderer.flipY = true;
         }
 
         else
         {
-            sr.flipY = false;
+            spriteRenderer.flipY = false;
         }
     }
+
+
 
     private void updateFish()
     {

@@ -5,15 +5,19 @@ using UnityEngine;
 public class RightEnemy : MonoBehaviour
 {
     Rigidbody2D rb;
-    private int xDestroyRange = -13;
-    private float ySpawnRange = 4.5f;
+    private int xRange = -13;
+    private float ySpawnRange = 4.2f;
     private int xSpawnPosition = 15;
 
+    private void Awake()
+    {
+        transform.position = RandomSpawnPosition();
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        transform.position = RandomSpawnPosition();
+        
     }
 
     private void FixedUpdate()
@@ -33,7 +37,7 @@ public class RightEnemy : MonoBehaviour
 
     private void DestroyRange()
     {
-        if(transform.position.x < xDestroyRange)
+        if (transform.position.x < xRange)
         {
             Destroy(gameObject);
         }
@@ -43,5 +47,6 @@ public class RightEnemy : MonoBehaviour
     {
         return new Vector3(xSpawnPosition, Random.Range(-ySpawnRange, ySpawnRange));
     }
+
 }
 

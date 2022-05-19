@@ -7,20 +7,15 @@ public class GameManager : MonoBehaviour
 {
     
     public GameObject fishbonePrefab;    
-    public GameObject blueFish;
-    public GameObject redFish;
     public AudioSource gameMusic;   
     public AudioSource baitSound;    
     public AudioSource deathSound;    
     public AudioSource winSound;
-    public Transform followPoint;
     private GameUI gameUI;
     public bool win;
     public bool death;
     public int score = 0;
     private int highScore;
-
-    
 
     private void Start()
     {
@@ -70,7 +65,4 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
         }
     }
-
-
-
 }

@@ -9,27 +9,26 @@ public class RedFish : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     private GameUI gameUI;
-    
-   
+    public PolygonCollider2D redFishCollider;
+    public SpriteRenderer redFishSpriteRenderer;
+
     private void Start()
     {   
         gameUI = GameObject.Find("Game UI").GetComponent<GameUI>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        FollowPointPosition();
-        spriteRenderer.flipX = true;
+        redFishSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        redFishCollider = gameObject.GetComponent<PolygonCollider2D>();
     }
 
     private void FixedUpdate()
     {
         Move();
-        FollowPointPosition();
     }
 
     private void Update()
     {
         Win();
-
     }
 
     private void Move()
@@ -39,7 +38,6 @@ public class RedFish : MonoBehaviour
 
         if (Input.touchCount > 0 && Time.timeScale == 1)
         {
-            spriteRenderer.flipX = false;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
         }
@@ -58,6 +56,12 @@ public class RedFish : MonoBehaviour
 
     private void Win()
     {
+        if (gameUI.image2.fillAmount == 1)
+        {
+            redFishCollider.enabled = true;
+            redFishSpriteRenderer.enabled = true;    
+        }
+
         if (gameUI.image3.fillAmount == 1)
         {
             Destroy(gameObject);
@@ -65,11 +69,6 @@ public class RedFish : MonoBehaviour
             gameManager.gameMusic.Stop();
             gameManager.win = true;
         }
-    }
-
-    private void FollowPointPosition()
-    {
-        transform.position = gameManager.followPoint.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

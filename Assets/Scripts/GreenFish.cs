@@ -53,13 +53,10 @@ public class GreenFish : MonoBehaviour
     private void updateFish()
     {
         if (gameUI.image1.fillAmount == 1)
-        {
-            gameManager.blueFish.SetActive(true);
+        {        
             gameObject.SetActive(false);
         }
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -8,20 +8,23 @@ public class BlueFish : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     private GameUI gameUI;
+    private PolygonCollider2D blueFishCollider;
+    private SpriteRenderer blueFishSpriteRenderer;
+    
 
     private void Start()
     {
         gameUI = GameObject.Find("Game UI").GetComponent<GameUI>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        FollowPointPosition();
-        spriteRenderer.flipX = true;
+        blueFishSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        blueFishCollider = gameObject.GetComponent<PolygonCollider2D>();
     }
 
     private void FixedUpdate()
     {
         Move();
-        FollowPointPosition();
+        
     }
 
     private void Update()
@@ -36,7 +39,6 @@ public class BlueFish : MonoBehaviour
 
         if (Input.touchCount > 0 && Time.timeScale == 1)
         {
-            spriteRenderer.flipX = false;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
         }
@@ -52,20 +54,20 @@ public class BlueFish : MonoBehaviour
         }
     }
 
-
-
     private void updateFish()
     {
-        if (gameUI.image2.fillAmount == 1)
+        if (gameUI.image1.fillAmount == 1)
+        {
+
+            blueFishCollider.enabled = true;
+            blueFishSpriteRenderer.enabled = true;
+            
+        }
+
+        if(gameUI.image2.fillAmount==1)
         {
             gameObject.SetActive(false);
-            gameManager.redFish.SetActive(true);
-        }
-    }
-
-    private void FollowPointPosition()
-    {
-        transform.position = gameManager.followPoint.position;
+        } 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -83,8 +85,7 @@ public class BlueFish : MonoBehaviour
             gameManager.score += 2;
             gameUI.image2.fillAmount += 2 / 25f;
             gameManager.baitSound.Play();
-            Destroy(collision.gameObject);
-            
+            Destroy(collision.gameObject);   
         }
 
         if (collision.CompareTag("Red Fish") || collision.CompareTag("Brown Fish"))

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class BlueFish : MonoBehaviour
+public class BlueFish : FishBase
 {
-    private Vector3 mousePos;
+    
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     private GameUI gameUI;
@@ -23,7 +23,7 @@ public class BlueFish : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        Move(spriteRenderer);
         
     }
 
@@ -32,27 +32,7 @@ public class BlueFish : MonoBehaviour
         updateFish();
     }
 
-    private void Move()
-    {
-        transform.position = Vector3.Lerp(transform.position, mousePos, Time.deltaTime);
-        transform.right = mousePos - transform.position;
-
-        if (Input.touchCount > 0 && Time.timeScale == 1)
-        {
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0;
-        }
-
-        if (mousePos.x < transform.position.x)
-        {
-            spriteRenderer.flipY = true;
-        }
-
-        else
-        {
-            spriteRenderer.flipY = false;
-        }
-    }
+    
 
     private void updateFish()
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GreenFish : MonoBehaviour
+public class GreenFish : FishBase
 {
-    private Vector3 mousePos;
+    
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager; 
     private GameUI gameUI;
@@ -19,7 +19,7 @@ public class GreenFish : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        Move(spriteRenderer);
     }
 
     private void Update()
@@ -27,28 +27,7 @@ public class GreenFish : MonoBehaviour
         updateFish();
     }
 
-    private void Move()
-    {
-        transform.position = Vector3.Lerp(transform.position, mousePos, Time.deltaTime);
-        transform.right = mousePos - transform.position;
-
-        if (Input.touchCount > 0 && Time.timeScale == 1)
-        {
-           
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0;
-        }
-
-        if (mousePos.x < transform.position.x)
-        {
-            spriteRenderer.flipY = true;
-        }
-
-        else
-        {
-            spriteRenderer.flipY = false;
-        }
-    }
+    
 
     private void updateFish()
     {

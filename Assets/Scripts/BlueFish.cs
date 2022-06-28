@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class BlueFish : FishBase
 {
     
-    private SpriteRenderer spriteRenderer;
+    
     private GameManager gameManager;
     private GameUI gameUI;
     private PolygonCollider2D blueFishCollider;
@@ -16,14 +16,13 @@ public class BlueFish : FishBase
     {
         gameUI = GameObject.Find("Game UI").GetComponent<GameUI>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         blueFishSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         blueFishCollider = gameObject.GetComponent<PolygonCollider2D>();
     }
 
     private void FixedUpdate()
     {
-        Move(spriteRenderer);
+        Move(blueFishSpriteRenderer);
         
     }
 

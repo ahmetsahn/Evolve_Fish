@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RedFish : FishBase
 {
     
-    private SpriteRenderer spriteRenderer;
+    
     private GameManager gameManager;
     private GameUI gameUI;
     public PolygonCollider2D redFishCollider;
@@ -16,14 +16,13 @@ public class RedFish : FishBase
     {   
         gameUI = GameObject.Find("Game UI").GetComponent<GameUI>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         redFishSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         redFishCollider = gameObject.GetComponent<PolygonCollider2D>();
     }
 
     private void FixedUpdate()
     {
-        Move(spriteRenderer);
+        Move(redFishSpriteRenderer);
     }
 
     private void Update()

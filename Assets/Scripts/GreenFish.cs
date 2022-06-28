@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GreenFish : FishBase
 {
     
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer greenFishSpriteRenderer;
     private GameManager gameManager; 
     private GameUI gameUI;
 
@@ -14,12 +14,12 @@ public class GreenFish : FishBase
     {   
         gameUI = GameObject.Find("Game UI").GetComponent<GameUI>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        greenFishSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
     {
-        Move(spriteRenderer);
+        Move(greenFishSpriteRenderer);
     }
 
     private void Update()

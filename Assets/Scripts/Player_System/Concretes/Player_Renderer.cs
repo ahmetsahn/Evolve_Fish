@@ -6,9 +6,11 @@ public class Player_Renderer : MonoBehaviour
 {
     
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
     private Sprite blueFishSprite;
     public Sprite BlueFishSprite => blueFishSprite;
-    
+
+    [SerializeField]
     private Sprite redFishSprite;
     public Sprite RedFishSprite => redFishSprite;
 

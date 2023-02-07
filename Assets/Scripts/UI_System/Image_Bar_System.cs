@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Image_Bar_System : MonoBehaviour
 {
-
     public static Image_Bar_System instance;
 
     [SerializeField]
@@ -38,7 +37,6 @@ public class Image_Bar_System : MonoBehaviour
     {
         Game_Events_System.instance.OnToFillImageBar += ToFillImageBar;
         currentImage = image_Bar1;
-       
     }
 
     private void ToFillImageBar(float value)

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Blue_Fish_State : Base_Player,IEnterState
 {
-
     public void EnterState(Player player)
     { 
         player.transform.localScale = new Vector3(2.3f, 2.3f, 2.3f);

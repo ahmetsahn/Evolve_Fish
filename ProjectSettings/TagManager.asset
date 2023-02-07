@@ -9,6 +9,8 @@ TagManager:
   - Red Fish
   - Brown Fish
   - Ground
+  - ExitScreenCollider
+  - Enemy
   layers:
   - Default
   - TransparentFX

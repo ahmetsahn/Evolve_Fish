@@ -5,13 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Game_Buttons : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    
-    public void Menu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
-
+    [SerializeField]
+    private GameObject pauseMenu;
     public void Play()
     {
         SceneManager.LoadScene("Game");

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy_Base : MonoBehaviour
+public class Enemy_Base : MonoBehaviour
 {
 
     protected Enemy_Movement enemy_Move;
@@ -19,7 +19,7 @@ public abstract class Enemy_Base : MonoBehaviour
 
 
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("ExitScreenCollider"))
         {

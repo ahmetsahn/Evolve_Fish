@@ -29,15 +29,7 @@ public class Player : MonoBehaviour
     private void OnEnable() => Game_Events_System.instance.OnDie += Die;
 
     
-
-   
-        
-
-    private void Ýnstance_OnDie()
-    {
-        throw new System.NotImplementedException();
-    }
-
+    
     private void Start()
     {
         playerMovement = GetComponent<Player_Movement>();
@@ -49,23 +41,24 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-       
-            playerMovement.Move(playerInput.MousePos);
-            playerInput.GetInteractInput();
-        
-        
-        
+        playerMovement.Move(playerInput.MousePos);
+        playerInput.GetInteractInput();
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bait") || collision.CompareTag("Enemy"))
+        if (collision.GetComponent<IEdible>() != null)
         {
+            collision.GetComponent<IEdible>().Eat();
             currentState.LwlUpControl(this);
         }
-    
-        
+
+        if(collision.GetComponent<IEdibleFish>()!= null)
+        {
+            collision.GetComponent<IEdibleFish>().Eat(this, GetComponent<Collider2D>());
+            currentState.LwlUpControl(this);
+        }
     }
 
     public void SwitchState(Base_Player state)

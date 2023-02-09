@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Bait : MonoBehaviour
+public class Bait : MonoBehaviour,IEdible
 {
     private float ySpawnPos = 6.5f;
     private float xSpawnRange = 9;
-
 
     private void OnEnable()
     {
@@ -19,15 +18,14 @@ public class Bait : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
 
-        if (collision.CompareTag("Player"))
-        {
-            gameObject.SetActive(false);
-            Game_Events_System.instance.LoadIncrementScore(1);
-            Game_Events_System.instance.LoadPrintScore();
-            Game_Events_System.instance.LoadToFillImageBar(1);
-            Game_Events_System.instance.LoadEatSound();
-            
-        }
+    public void Eat()
+    {
+        gameObject.SetActive(false);
+        Game_Events_System.instance.LoadIncrementScore(1);
+        Game_Events_System.instance.LoadPrintScore();
+        Game_Events_System.instance.LoadToFillImageBar(1);
+        Game_Events_System.instance.LoadEatSound();
     }
 }

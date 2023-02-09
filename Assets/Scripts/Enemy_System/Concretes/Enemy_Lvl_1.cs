@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Lvl_1 : Enemy_Base
+public class Enemy_Lvl_1 : Enemy_Base,IEdibleFish
 {
     private void Awake()
     {
@@ -20,29 +20,26 @@ public class Enemy_Lvl_1 : Enemy_Base
         enemy_Move.Move(enemy_Transform.MoveDirection);
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    
+
+
+    public void Eat(Player player,Collider2D collision)
     {
-        if (collision.GetComponent<Player>())
+        if(player.CurrentState == player.BlueFishState || player.CurrentState == player.RedFishState)
         {
-            if (collision.GetComponent<Player>().CurrentState == collision.GetComponent<Player>().GreenFishState)
-            {
-                Destroy(collision.gameObject);
-                
-                Game_Events_System.instance.LoadDie();
-            }
-
-
-            else
-            {
-                Game_Events_System.instance.LoadIncrementScore(2);
-                Game_Events_System.instance.LoadPrintScore();
-                Game_Events_System.instance.LoadToFillImageBar(2);
-                Game_Events_System.instance.LoadEatSound();
-                gameObject.SetActive(false);
-            }
+            Game_Events_System.instance.LoadIncrementScore(2);
+            Game_Events_System.instance.LoadPrintScore();
+            Game_Events_System.instance.LoadToFillImageBar(2);
+            Game_Events_System.instance.LoadEatSound();
+            gameObject.SetActive(false);
         }
 
-        base.OnTriggerEnter2D(collision);
+        else
+        {
+            Destroy(collision.gameObject);
+            Game_Events_System.instance.LoadDie();
+        }
+
+        
     }
-    
 }

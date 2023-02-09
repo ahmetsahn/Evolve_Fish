@@ -15,7 +15,6 @@ public class Fish_Bone : MonoBehaviour
     IEnumerator EndGameTimer()
     {
         yield return new WaitForSeconds(1);
-        Debug.Log("Ground");
         Game_Events_System.instance.LoadGameOverPanel();
     }
     

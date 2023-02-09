@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Spawn_Manager : Base_Spawn_Manager
+public class Enemy_Spawn_Manager : MonoBehaviour,ISpawn_Object
 {
    
     private void Start()
@@ -11,15 +11,7 @@ public class Enemy_Spawn_Manager : Base_Spawn_Manager
         StartCoroutine(SpeedUpSpawn());
     }
 
-    protected override void SpawnObject()
-    {
-        GameObject obj = Enemy_Object_Pool.instance.GetPooledObject();
-        if (obj != null)
-        {
-            
-            obj.SetActive(true);
-        }
-    }
+    
 
     IEnumerator SpeedUpSpawn()
     {
@@ -37,4 +29,13 @@ public class Enemy_Spawn_Manager : Base_Spawn_Manager
         InvokeRepeating("SpawnObject", 0, 0.5f);
     }
 
+    public void SpawnObject()
+    {
+        GameObject obj = Enemy_Object_Pool.instance.GetPooledObject();
+        if (obj != null)
+        {
+
+            obj.SetActive(true);
+        }
+    }
 }

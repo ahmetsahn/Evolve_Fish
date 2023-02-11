@@ -4,5 +4,11 @@ using UnityEngine;
 
 public abstract class Base_Player 
 {
-    public abstract void LwlUpControl(Player player);
+    public virtual void EnterState(Player player)
+    {
+
+    }
+    public abstract void OnTriggerEnter2D(Player player);
+    
+
 }

@@ -51,21 +51,20 @@ public class Player : MonoBehaviour
         if (collision.GetComponent<IEdible>() != null)
         {
             collision.GetComponent<IEdible>().Eat();
-            currentState.LwlUpControl(this);
+            currentState.OnTriggerEnter2D(this);
         }
 
         if(collision.GetComponent<IEdibleFish>()!= null)
         {
             collision.GetComponent<IEdibleFish>().Eat(this, GetComponent<Collider2D>());
-            currentState.LwlUpControl(this);
+            currentState.OnTriggerEnter2D(this);
         }
     }
 
     public void SwitchState(Base_Player state)
     {
         currentState = state;
-        IEnterState enterState = currentState as IEnterState;
-        enterState.EnterState(this);
+        currentState.EnterState(this);
     }
 
     private void Die()

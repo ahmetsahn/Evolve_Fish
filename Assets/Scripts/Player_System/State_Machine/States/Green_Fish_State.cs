@@ -5,7 +5,7 @@ using UnityEngine;
 public class Green_Fish_State : Base_Player
 {
   
-    public override void LwlUpControl(Player player)
+    public override void OnTriggerEnter2D(Player player)
     {
         if (Image_Bar_System.instance.Image_Bar1.fillAmount >= 1)
         {

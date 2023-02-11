@@ -4,19 +4,12 @@ using UnityEngine;
 
 public abstract class Enemy_Base : MonoBehaviour
 {
-
+    [SerializeField]
     protected Enemy_Movement enemy_Move;
+    [SerializeField]
     protected Enemy_Transform enemy_Transform;
+    [SerializeField]
     protected Enemy_Renderer enemy_Renderer;
-
-
-    public void SetComponent()
-    {
-        enemy_Move = GetComponent<Enemy_Movement>();
-        enemy_Transform = GetComponent<Enemy_Transform>();
-        enemy_Renderer = GetComponent<Enemy_Renderer>();
-    }
-
 
 
     protected void OnTriggerEnter2D(Collider2D collision)
@@ -26,5 +19,7 @@ public abstract class Enemy_Base : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+   
 
 }

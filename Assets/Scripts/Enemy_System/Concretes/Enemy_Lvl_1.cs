@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Enemy_Lvl_1 : Enemy_Base,IEdibleFish
 {
-    private void Awake()
-    {
-        SetComponent();
-    }
+  
 
     private void OnEnable()
     {
@@ -25,7 +22,13 @@ public class Enemy_Lvl_1 : Enemy_Base,IEdibleFish
 
     public void Eat(Player player,Collider2D collision)
     {
-        if(player.CurrentState == player.BlueFishState || player.CurrentState == player.RedFishState)
+        if(player.CurrentState == player.GreenFishState)
+        {
+            Destroy(collision.gameObject);
+            Game_Events_System.instance.LoadDie();
+        }
+
+        else
         {
             Game_Events_System.instance.LoadIncrementScore(2);
             Game_Events_System.instance.LoadPrintScore();
@@ -34,12 +37,8 @@ public class Enemy_Lvl_1 : Enemy_Base,IEdibleFish
             gameObject.SetActive(false);
         }
 
-        else
-        {
-            Destroy(collision.gameObject);
-            Game_Events_System.instance.LoadDie();
-        }
-
         
     }
+
+    
 }

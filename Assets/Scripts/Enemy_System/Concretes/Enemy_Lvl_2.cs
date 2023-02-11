@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Enemy_Lvl_2 : Enemy_Base,IEdibleFish
 {
-    private void Awake()
-    {
-        SetComponent();
-    }
+   
 
     private void OnEnable()
     {

@@ -7748,8 +7748,8 @@ GameObject:
   - component: {fileID: 2124060267}
   - component: {fileID: 2124060266}
   - component: {fileID: 2124060265}
-  - component: {fileID: 2124060264}
   - component: {fileID: 2124060263}
+  - component: {fileID: 2124060264}
   - component: {fileID: 2124060262}
   - component: {fileID: 2124060268}
   - component: {fileID: 2124060269}
@@ -7810,6 +7810,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b081a4e1559ce64893dca5d6075515d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 2124060263}
+  playerInput: {fileID: 2124060264}
+  playerRenderer: {fileID: 2124060262}
   fishBonePrefab: {fileID: 8272505768869060883, guid: f0495e0c7c5399a4886bee0c22b4113a, type: 3}
 --- !u!212 &2124060266
 SpriteRenderer:

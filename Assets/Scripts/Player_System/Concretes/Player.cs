@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   
+    [SerializeField]
     private Player_Movement playerMovement;
+    [SerializeField]
     private Player_Input playerInput;
+    [SerializeField]
     private Player_Renderer playerRenderer;
     public Player_Renderer PlayerRenderer => playerRenderer;
 
@@ -32,12 +34,7 @@ public class Player : MonoBehaviour
     
     private void Start()
     {
-        playerMovement = GetComponent<Player_Movement>();
-        playerInput = GetComponent<Player_Input>();
-        playerRenderer = GetComponent<Player_Renderer>();
-        
         currentState = greenFishState;
-        
     }
     private void Update()
     {

@@ -13,7 +13,7 @@ public class Base_Object_Pool : MonoBehaviour
 
         for (int i = 0; i < poolObjects.Count; i++)
         {
-            if (!poolObjects[i].activeInHierarchy)
+            if (!poolObjects[i].activeSelf)
             {
                 return poolObjects[i];
             }

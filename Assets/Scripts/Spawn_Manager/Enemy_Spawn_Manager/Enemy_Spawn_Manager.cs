@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Spawn_Manager : MonoBehaviour,ISpawn_Object
+public class Enemy_Spawn_Manager : Base_Spawn_Manager
 {
    
     private void Start()
@@ -29,7 +29,7 @@ public class Enemy_Spawn_Manager : MonoBehaviour,ISpawn_Object
         InvokeRepeating("SpawnObject", 0, 0.5f);
     }
 
-    public void SpawnObject()
+    public override void SpawnObject()
     {
         GameObject obj = Enemy_Object_Pool.instance.GetPooledObject();
         if (obj != null)

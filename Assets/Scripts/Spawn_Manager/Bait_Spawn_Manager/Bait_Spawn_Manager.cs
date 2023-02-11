@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Bait_Spawn_Manager : MonoBehaviour,ISpawn_Object
+public class Bait_Spawn_Manager : Base_Spawn_Manager
 {
    
 
@@ -13,7 +13,7 @@ public class Bait_Spawn_Manager : MonoBehaviour,ISpawn_Object
     }
 
 
-    public void SpawnObject()
+    public override void SpawnObject()
     {
         GameObject obj = Bait_Object_Pool.instance.GetPooledObject();
         if (obj != null)

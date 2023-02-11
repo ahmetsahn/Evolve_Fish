@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Base : MonoBehaviour
+public abstract class Enemy_Base : MonoBehaviour
 {
 
     protected Enemy_Movement enemy_Move;

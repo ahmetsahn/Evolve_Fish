@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Bait : MonoBehaviour,IEdible
+public class Bait : MonoBehaviour,IEatable
 {
     private float ySpawnPos = 6.5f;
     private float xSpawnRange = 9;
 
+    
     private void OnEnable()
     {
         transform.position = new Vector3(Random.RandomRange(-xSpawnRange, xSpawnRange), ySpawnPos, 0);
@@ -20,7 +21,7 @@ public class Bait : MonoBehaviour,IEdible
         }
     }
 
-    public void Eat()
+    public void Eat(Player player, Collider2D collision)
     {
         gameObject.SetActive(false);
         Game_Events_System.instance.LoadIncrementScore(1);
@@ -28,4 +29,5 @@ public class Bait : MonoBehaviour,IEdible
         Game_Events_System.instance.LoadToFillImageBar(1);
         Game_Events_System.instance.LoadEatSound();
     }
+
 }

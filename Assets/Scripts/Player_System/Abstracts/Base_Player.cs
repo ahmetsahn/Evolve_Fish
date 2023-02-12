@@ -8,7 +8,7 @@ public abstract class Base_Player
     {
 
     }
-    public abstract void OnTriggerEnter2D(Player player);
+    public abstract void OnTrigger(Player player);
     
 
 }

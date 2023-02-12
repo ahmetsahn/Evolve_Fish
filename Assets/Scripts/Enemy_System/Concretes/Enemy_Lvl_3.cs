@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Lvl_3 : Enemy_Base,IEdibleFish
+public class Enemy_Lvl_3 : Enemy_Base,IEatable
 {
     
 

@@ -10,7 +10,7 @@ public class Blue_Fish_State : Base_Player
         player.gameObject.GetComponent<SpriteRenderer>().sprite = player.PlayerRenderer.BlueFishSprite;
     }
 
-    public override void OnTriggerEnter2D(Player player)
+    public override void OnTrigger(Player player)
     {
         if (Image_Bar_System.instance.Image_Bar2.fillAmount >= 1)
         {

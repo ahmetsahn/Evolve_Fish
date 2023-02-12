@@ -45,17 +45,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<IEdible>() != null)
-        {
-            collision.GetComponent<IEdible>().Eat();
-            currentState.OnTriggerEnter2D(this);
-        }
-
-        if(collision.GetComponent<IEdibleFish>()!= null)
-        {
-            collision.GetComponent<IEdibleFish>().Eat(this, GetComponent<Collider2D>());
-            currentState.OnTriggerEnter2D(this);
-        }
+        IEatable eatable = collision.GetComponent<IEatable>();
+        eatable?.Eat(this, GetComponent<Collider2D>());
+        currentState.OnTrigger(this);
     }
 
     public void SwitchState(Base_Player state)
@@ -67,6 +59,5 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Instantiate(fishBonePrefab, transform.position, Quaternion.identity);
-        
     }
 }
